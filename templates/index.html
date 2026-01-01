@@ -61,6 +61,12 @@
         .delete-btn:hover {
             background-color: #c82333;
         }
+        .edit-btn {
+            background-color: #007bff;
+        }
+        .edit-btn:hover {
+            background-color: #0056b3;
+        }
         .empty-message {
             text-align: center;
             color: #777;
@@ -72,7 +78,6 @@
 
 <div class="container">
     <h2>✓ My To-Do List</h2>
-    <h2>your todo list</h2>
 
     <div class="form-group">
         <form method="POST" style="display: flex; gap: 10px; width: 100%;">
@@ -86,9 +91,14 @@
             {% for task in tasks %}
                 <li class="task-item">
                     <span class="task-text">{{ task }}</span>
-                    <a href="/delete/{{ loop.index0 }}" style="text-decoration: none;">
-                        <button class="delete-btn">Delete</button>
-                    </a>
+                    <div style="display: flex; gap: 8px;">
+                        <a href="/edit/{{ loop.index0 }}" style="text-decoration: none;">
+                            <button class="edit-btn">Edit</button>
+                        </a>
+                        <a href="/delete/{{ loop.index0 }}" style="text-decoration: none;">
+                            <button class="delete-btn">Delete</button>
+                        </a>
+                    </div>
                 </li>
             {% endfor %}
         </ul>

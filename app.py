@@ -20,5 +20,19 @@ def delete(index):
         tasks.pop(index)
     return redirect("/")
 
+@app.route("/edit/<int:index>", methods=["GET"])
+def edit(index):
+    if 0 <= index < len(tasks):
+        return render_template("edit.html", task=tasks[index], index=index)
+    return redirect("/")
+
+@app.route("/update/<int:index>", methods=["POST"])
+def update(index):
+    if 0 <= index < len(tasks):
+        updated_task = request.form.get("task")
+        if updated_task:
+            tasks[index] = updated_task
+    return redirect("/")
+
 if __name__ == "__main__":  
     app.run()
