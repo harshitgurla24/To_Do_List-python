@@ -17,7 +17,6 @@ def index():
 @app.route("/delete/<int:index>", methods=["GET"])
 def delete(index):
     if 0 <= index < len(tasks):
-        
         tasks.pop(index)
     return redirect("/")
 
